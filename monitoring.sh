@@ -12,8 +12,8 @@ umem=$(free -m | grep Mem | awk '{print $3}')
 pmem=$(free -m | grep Mem | awk '{printf "%.2f", $3/$2*100}' | xargs)
 printf "#Memory Usage: ${umem}/${tmem}MB (${pmem}%%)\n"
 #5
-tdisk=$(df -h | grep root | awk '{print $2}' | tr -d 'G')
-udisk=$(df -h | grep root | awk '{print $3}' | tr -d 'G')
+tdisk=$(df -m | grep LVMGroup | awk '{sum+=$2}END{print sum}')
+udisk=$(df -m | grep LVMGroup | awk '{sum+=$3}END{print sum}')
 pdisk=$(df -h | grep root | awk '{print $5}' | tr -d '%')
 printf "#Disk Usage: ${udisk}/${tdisk}GB (${pdisk}%%)\n"
 #6
