@@ -7,9 +7,9 @@ printf "CPU physical: $(nproc --all)\n"
 #3
 printf "vCPU: $(cat /proc/cpuinfo | grep processor | wc -l)\n"
 #4
-tmem=$(free | grep Mem | awk '{print $2}')
-umem=$(free | grep Mem | awk '{print $3}')
-pmem=$(free | grep Mem | awk '{printf "%.2f", $3/$2*100}' | xargs)
+tmem=$(free -m | grep Mem | awk '{print $2}')
+umem=$(free -m | grep Mem | awk '{print $3}')
+pmem=$(free -m | grep Mem | awk '{printf "%.2f", $3/$2*100}' | xargs)
 printf "Memory Usage: ${umem}/${tmem}MB (${pmem}%%)\n"
 #5
 tdisk=$(df -h | grep root | awk '{print $2}' | tr -d 'G')
