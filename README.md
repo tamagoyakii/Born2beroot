@@ -1,2 +1,2 @@
 # Born2beroot
-Summary: This document is a System Administration related exercise.
+가상머신으로 데비안 운영체제 익히기
